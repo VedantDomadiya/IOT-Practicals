@@ -1,0 +1,29 @@
+void setup()
+{
+ pinMode(5,OUTPUT);
+ pinMode(11,OUTPUT);
+ pinMode(6,INPUT);
+ Serial.begin(9600);
+}
+
+void loop()
+{
+ digitalWrite(5,LOW);
+ delayMicroseconds(2);
+ digitalWrite(5,HIGH);
+ delayMicroseconds(10);
+
+ float x = pulseIn(10,HIGH);
+ x = x* 34300/1000000;
+ if((x/2)>20){
+   analogWrite(11,0);
+ }
+
+ else if((x/2)<10){
+   analogWrite(11,500);
+ }
+ else if ((x/2)<20){
+   analogWrite(11,20);
+ }
+ 
+}
