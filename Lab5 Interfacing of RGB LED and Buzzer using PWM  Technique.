@@ -1,0 +1,57 @@
+*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-
+Lab 5A - Interfacing of RGB LED using PWM
+*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-
+
+void setup()
+{
+ pinMode(11, OUTPUT);
+ pinMode(10, OUTPUT);
+ pinMode(9, OUTPUT);
+}
+void loop()
+{
+ analogWrite(11,0);
+ analogWrite(10,0);
+ analogWrite(9,255);
+)
+
+*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-
+Lab 5B - Interfacing of Buzzer LED using PWM
+*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-
+
+void setup()
+{
+ pinMode(9, OUTPUT);
+}
+void loop()
+{
+ analogWrite(9,200);
+}
+
+*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-
+Lab 5C - Interfacing of Buzzer and LED light using PWM and LDR sensor
+*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-*-*-*-*-**-*-*-*-*-*-
+
+void setup()
+{
+ pinMode(11, OUTPUT);
+ pinMode(A0,INPUT);
+ pinMode(3,OUTPUT);
+ Serial.begin(9600);
+}
+
+void loop()
+{
+ int x = analogRead(A0);
+ analogWrite(3,(x/3));
+ 
+if (x>500){
+   analogWrite(11,5);
+ }
+else if(x>200 && x<500){
+   analogWrite(11,100);
+ }
+else if(x<200){
+   analogWrite(11,300);
+ }
+}
