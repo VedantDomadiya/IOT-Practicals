@@ -1,0 +1,41 @@
+*-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-*
+Program - 3A : LDR Interfacing 
+*-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-*
+
+void setup()
+{
+  Serial.begin(9600);  
+}
+
+void loop()
+{
+  int x=analogRead(A1);
+  Serial.println(x);
+}
+
+*-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-*
+Program - 3B : LDR Interfacing using bulb 
+*-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-**-*-*-*-*-*-*-*
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(7,OUTPUT);
+  pinMode(A1,INPUT);
+}
+void loop()
+{
+  int x=analogRead(A1);
+  Serial.println(x);
+  int min=6;
+  int max=679;
+  int mid=(min+max)/2;
+  
+if(x<mid){
+    digitalWrite(7,HIGH);
+  }
+  else{
+    digitalWrite(7,LOW);
+  }
+
+}
